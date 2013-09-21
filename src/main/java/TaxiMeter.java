@@ -15,9 +15,15 @@ public class TaxiMeter {
         } else if (InBaseDistance(mile)) {
             distanceCharge += STARTING_PRICE + BASE_PRICE * (mile - STARTING_DISTANCE);
         } else {
-            distanceCharge += STARTING_PRICE + BASE_PRICE * STARTING_PRICE + RATING_PRICE * (mile - STARTING_PRICE);
+            distanceCharge += STARTING_PRICE + BASE_PRICE * (BASE_DISTANCE - STARTING_DISTANCE) +
+                    RATING_PRICE * (mile - BASE_DISTANCE);
         }
-        return distanceCharge + stoppingCharge;
+        double totalCharge = distanceCharge + stoppingCharge;
+        return roundUpCharge(totalCharge);
+    }
+
+    private double roundUpCharge(double charge) {
+        return Math.ceil(charge);
     }
 
     private boolean InBaseDistance(double mile) {

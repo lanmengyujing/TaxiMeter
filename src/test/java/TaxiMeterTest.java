@@ -27,12 +27,18 @@ public class TaxiMeterTest {
     @Test
     public void should_charge_12_when_distance_is_9() throws Exception {
         double price = taxiMeter.calculate(9, 0);
-        assertThat(price, is(14.40));
+        assertThat(price, is(12.0));
     }
 
     @Test
     public void should_charge_7_when_distance_is_2_and_stopping_time_is_4_minutes() throws Exception {
         double price = taxiMeter.calculate(2,4);
         assertThat(price, is(7.0));
+    }
+
+    @Test
+    public void should_charge_14_when_distance_is_10() throws Exception {
+        double price = taxiMeter.calculate(10, 0);
+        assertThat(price, is(14.0));
     }
 }
