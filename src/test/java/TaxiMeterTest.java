@@ -27,6 +27,8 @@ public class TaxiMeterTest {
     @Test
     public void should_charge_12_when_distance_is_9() throws Exception {
         double price = taxiMeter.calculate(9);
-        assertThat(price, is(14.4));
+        assertThat(price, is(14.40));
     }
+
+
 }
